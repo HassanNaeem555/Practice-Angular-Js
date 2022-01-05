@@ -50,4 +50,11 @@ export class TodosComponent implements OnInit {
     this.todos.push(todo);
     localStorage.setItem('todos', JSON.stringify(this.todos));
   }
+  checkboxTodo = (todo: Todo) => {
+    const getIndex = this.todos.indexOf(todo);
+    this.todos[getIndex].active = !this.todos[getIndex].active;
+    this.todos.splice(getIndex, 1, todo);
+    localStorage.setItem('todos', JSON.stringify(this.todos));
+    console.log('todo get for deletion', todo, 'getIndex::::', getIndex);
+  }
 }
