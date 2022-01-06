@@ -1,16 +1,20 @@
-<app-add-todo (onSave)="addTodos($event)"></app-add-todo>
-<h4>Your Todos</h4>
-<div *ngIf="this.todos.length === 0; else elseBlock">
-  <p>No Todos To Display</p>
-</div>
-<ng-template #elseBlock>
-  <div *ngFor="let todo of todos; index as i">
-    <app-todo-item
-      [todo]="todo"
-      [i]="i"
-      (todoDelete)="deleteTodo($event)"
-      (todoCheckbox)="checkboxTodo($event)"
-      >{{ todo.sno }} - {{ todo.title }} - {{ todo.description }}</app-todo-item
-    >
+<div class="container">
+  <h1 class="text-center mb-3">Todos List</h1>
+  <app-add-todo (onSave)="addTodos($event)"></app-add-todo>
+  <h4>Your Todos</h4>
+  <div *ngIf="this.todos.length === 0; else elseBlock">
+    <p>No Todos To Display</p>
   </div>
-</ng-template>
+  <ng-template #elseBlock>
+    <div *ngFor="let todo of todos; index as i">
+      <app-todo-item
+        [todo]="todo"
+        [i]="i"
+        (todoDelete)="deleteTodo($event)"
+        (todoCheckbox)="checkboxTodo($event)"
+        >{{ todo.sno }} - {{ todo.title }} -
+        {{ todo.description }}</app-todo-item
+      >
+    </div>
+  </ng-template>
+</div>
